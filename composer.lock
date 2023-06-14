@@ -3520,7 +3520,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Symfony\\Component\\HttpFoundation\\": ""
+                    "Symfony\\\\HttpFoundation\\": ""
                 },
                 "exclude-from-classmap": [
                     "/Tests/"
