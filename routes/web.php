@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\TarefasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+Route::post('store-tarefa', [TarefasController::class, 'store'])
+->name('store-tarefa')->middleware('auth');
+        
+Route::get('cadastrar-tarefa', [TarefasController::class, 'create'])
+->name('cadastrar-tarefa')->middleware('auth');

@@ -651,6 +651,9 @@ select {
 .relative {
   position: relative;
 }
+.bottom-0 {
+  bottom: 0px;
+}
 .left-0 {
   left: 0px;
 }
@@ -793,6 +796,9 @@ select {
 .max-w-7xl {
   max-width: 80rem;
 }
+.max-w-screen-md {
+  max-width: 768px;
+}
 .max-w-xl {
   max-width: 36rem;
 }
@@ -835,6 +841,9 @@ select {
 }
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.flex-row {
+  flex-direction: row;
 }
 .flex-col {
   flex-direction: column;
@@ -1006,10 +1015,6 @@ select {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
 .pb-1 {
   padding-bottom: 0.25rem;
 }
@@ -1062,6 +1067,9 @@ select {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+.font-bold {
+  font-weight: 700;
 }
 .font-medium {
   font-weight: 500;
@@ -1118,6 +1126,10 @@ select {
 .text-gray-900 {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+.text-green-500 {
+  --tw-text-opacity: 1;
+  color: rgb(34 197 94 / var(--tw-text-opacity));
 }
 .text-green-600 {
   --tw-text-opacity: 1;
@@ -1379,6 +1391,10 @@ select {
 
   .sm\:ml-6 {
     margin-left: 1.5rem;
+  }
+
+  .sm\:inline {
+    display: inline;
   }
 
   .sm\:flex {
