@@ -15,17 +15,18 @@ use App\Http\Controllers\Auth\TarefasController;
 |
 */
 
-Route::get('/', [AuthenticatedSessionController::class, 'create'])
-->name('login');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/', [TarefasController::class, 'index'])
+->name('dashboard')->middleware('auth');
 
 require __DIR__.'/auth.php';
+
+Route::post('', [TarefasController::class, 'index'])
+->name('cadastrar-tarefa')->middleware('auth');
+
+Route::get('cadastrar-tarefa', [TarefasController::class, 'create'])
+->name('cadastrar-tarefa')->middleware('auth');
 
 Route::post('store-tarefa', [TarefasController::class, 'store'])
 ->name('store-tarefa')->middleware('auth');
         
-Route::get('cadastrar-tarefa', [TarefasController::class, 'create'])
-->name('cadastrar-tarefa')->middleware('auth');
+

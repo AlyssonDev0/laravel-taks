@@ -24,7 +24,17 @@ class TarefaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
-        ];
+                'nome' => 'required|string|max:100|min:3|unique:tarefas'
+            ];
     }
+
+     /* Alterando Mensagens de Erro do Request*/
+     public function messages()
+     {
+         return [
+             'nome.unique' => 'Já existe uma tarefa com essa descrição.',
+             'max' => 'Número máximo de caracteres permitido é: 100.',
+             'min' => 'Número minimo de caracteres permitido é: 3.',
+         ];
+     }
 }
