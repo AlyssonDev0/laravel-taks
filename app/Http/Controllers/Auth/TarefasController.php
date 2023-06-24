@@ -13,7 +13,7 @@ class TarefasController extends Controller
 
     public function index()
     {
-        $listaTarefas = Tarefa::where('user_id', Auth::id())->paginate(2);
+        $listaTarefas = Tarefa::where('user_id', Auth::id())->simplePaginate(2);
 
         return view('dashboard', compact('listaTarefas'));
     }

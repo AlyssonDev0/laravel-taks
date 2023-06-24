@@ -13,38 +13,56 @@
                         </x-button>
                     </div>
 
-                    <div class="flex flex-col">
+                    <div class="flex flex-col mt-2">
                         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                            <div class="overflow-hidden">
-                                <table class="min-w-full text-left text-sm font-light">
-                                <thead class="border-b font-medium dark:border-neutral-500">
-                                    <tr>
-                                    <th scope="col" class="px-6 py-4"></th>
-                                    <th scope="col" class="px-6 py-4">Descrição</th>
-                                    <th scope="col" class="px-6 py-4">Completa</th>
-                                    <th scope="col" class="px-6 py-4">Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($listaTarefas as $tarefa)
-                                        <tr
-                                        class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                                        <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
-                                        <td class="whitespace-nowrap px-6 py-4">{{ $tarefa -> nome }}</td>
-                                        <td class="whitespace-nowrap px-6 py-4 text-center">
-                                            <input type="checkbox">
-                                        </td>
-                                        <td class="whitespace-nowrap px-6 py-4">Editar | Apagar</td>
-                                        </tr>       
-                                    @endforeach                             
-                                </tbody>
-                                </table>
+                                <div class="overflow-hidden">
+                                    <table class="border-rounded min-w-full text-left text-sm font-light">
+                                    <thead class="border-b font-medium bg-gray-200 dark:border-neutral-500">
+                                        <tr>
+                                        <th scope="col" class="px-6 py-4">ID</th>
+                                        <th scope="col" class="px-6 py-4">Descrição</th>
+                                        <th scope="col" class="px-6 py-4 text-center">Completa</th>
+                                        <th scope="col" class="px-6 py-4">Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($listaTarefas as $tarefa)
+                                            <tr
+                                            class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-100">
+                                            <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $tarefa -> id }}</td>
+                                            <td class="whitespace-nowrap px-6 py-4">{{ $tarefa -> nome }}</td>
+                                            <td class="whitespace-nowrap px-6 py-4 text-center">
+                                                <input type="checkbox">
+                                            </td>
+                                            <td class="whitespace-nowrap px-6 py-4">
+                                                <x-button-edit>
+                                                    <a  href="{{ route('login') }}">
+                                                        <span class="material-symbols-outlined">
+                                                        edit
+                                                        </span>
+                                                    </a>
+                                                </x-button-edit>
+                                                <x-button-delete>
+                                                    <a  href="{{ route('login') }}">
+                                                        <span class="material-symbols-outlined">
+                                                            delete
+                                                        </span>
+                                                    </a>
+                                                </x-button-delete>
+                                            </td>
+                                            </tr>       
+                                        @endforeach                             
+                                    </tbody>
+                                    </table>
+                                    <div class="mt-4">
+                                        {{ $listaTarefas->links() }}
+                                    </div>
+                                </div>
                             </div>
-                            </div>
-                            {{ $listaTarefas->links() }}
+                           
                         </div>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
