@@ -1045,6 +1045,9 @@ select {
 .pl-3 {
   padding-left: 0.75rem;
 }
+.pl-8 {
+  padding-left: 2rem;
+}
 .pr-4 {
   padding-right: 1rem;
 }

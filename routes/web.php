@@ -20,13 +20,15 @@ Route::get('/', [TarefasController::class, 'index'])
 
 require __DIR__.'/auth.php';
 
-Route::post('', [TarefasController::class, 'index'])
-->name('cadastrar-tarefa')->middleware('auth');
-
 Route::get('cadastrar-tarefa', [TarefasController::class, 'create'])
 ->name('cadastrar-tarefa')->middleware('auth');
 
 Route::post('store-tarefa', [TarefasController::class, 'store'])
 ->name('store-tarefa')->middleware('auth');
+
+Route::delete('destroy-tarefa/{id}', [TarefasController::class, 'destroy'])
+->name('destroy-tarefa')->middleware('auth');
+
+
         
 

@@ -13,10 +13,11 @@ class TarefasController extends Controller
 
     public function index()
     {
-        $listaTarefas = Tarefa::where('user_id', Auth::id())->simplePaginate(2);
+        $listaTarefas = Tarefa::where('user_id', Auth::id())->simplePaginate(3);
 
         return view('dashboard', compact('listaTarefas'));
     }
+
     public function create()
     {
         return view('register-tarefa');
@@ -30,6 +31,12 @@ class TarefasController extends Controller
         $tarefa->complete = false;
         $tarefa->save();
 
-        return redirect(route("cadastrar-tarefa"))->with('status', 'Tarefa salva com sucesso!');
+        return redirect(route("dashboard"))->with('status', 'Tarefa salva com sucesso!');
+    }
+
+    public function destroy($id)
+    {
+        Tarefa::findOrFail($id)->delete();
+        return redirect(route('dashboard'))->with('status', 'Tarefa Excluida com sucesso!');
     }
 }
