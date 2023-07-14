@@ -6,7 +6,7 @@
     <span class="material-symbols-outlined">
         check_circle
     </span>
-    <div class="pl-8" style="padding-left: 10px;">
+    <div class="pl-6" style="padding-left: 10px;">
         {{ $status }} 
     </div>
 </div>

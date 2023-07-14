@@ -22,7 +22,7 @@
                                     <table class="border-rounded min-w-full text-left text-sm font-light">
                                         <thead class="border-b font-medium bg-gray-200 dark:border-neutral-500">
                                             <tr>
-                                                <th scope="col" class="px-6 py-4">ID</th>
+                                                <th scope="col" class="px-6 py-4">Nº</th>
                                                 <th scope="col" class="px-6 py-4">Descrição</th>
                                                 <th scope="col" class="px-6 py-4 text-center">Completa</th>
                                                 <th scope="col" class="px-6 py-4">Ações</th>
@@ -31,14 +31,14 @@
                                         <tbody>
                                             @foreach($listaTarefas as $tarefa)
                                             <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-100">
-                                                <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $tarefa -> id }}</td>
+                                                <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $contadorInicial++ }}</td>
                                                 <td class="whitespace-nowrap px-6 py-4">{{ $tarefa -> nome }}</td>
                                                 <td class="whitespace-nowrap px-6 py-4 text-center">
                                                     <input type="checkbox">
                                                 </td>
                                                 <td class="flex dap-2 whitespace-nowrap px-6 py-4">
                                                     <x-button-edit>
-                                                        <a href="{{ route('login') }}">
+                                                        <a href="{{ route('create-update-tarefa', ['id' => $tarefa->id]) }}">
                                                             <span class="material-symbols-outlined">
                                                                 edit
                                                             </span>

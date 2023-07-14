@@ -14,8 +14,9 @@ class TarefasController extends Controller
     public function index()
     {
         $listaTarefas = Tarefa::where('user_id', Auth::id())->simplePaginate(3);
-
-        return view('dashboard', compact('listaTarefas'));
+        $contadorInicial = ($listaTarefas->currentPage()-1) * $listaTarefas->perPage(); 
+        $contadorInicial++;//"Adaptação" para contar itens da paginação kkk
+        return view('dashboard', compact('listaTarefas', 'contadorInicial'));
     }
 
     public function create()
@@ -38,5 +39,17 @@ class TarefasController extends Controller
     {
         Tarefa::findOrFail($id)->delete();
         return redirect(route('dashboard'))->with('status', 'Tarefa Excluida com sucesso!');
+    }
+
+    public function createUpdateTarefa($id)
+    {
+        $tarefa = Tarefa::findOrFail($id);
+        return view('update-tarefa', compact('tarefa'));
+    }
+
+    public function update(TarefaRequest $request)
+    {
+        Tarefa::findOrFail($request->id)->update($request->all());
+        return redirect('/')->with('status', "Tarefa Atualizada com Sucesso!");
     }
 }

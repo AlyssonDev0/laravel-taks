@@ -29,6 +29,14 @@ Route::post('store-tarefa', [TarefasController::class, 'store'])
 Route::delete('destroy-tarefa/{id}', [TarefasController::class, 'destroy'])
 ->name('destroy-tarefa')->middleware('auth');
 
+Route::get('editar/tarefa/{id}', [TarefasController::class, 'createUpdateTarefa'])
+->name('create-update-tarefa')->middleware('auth');
+
+Route::put('update/{id}', [TarefasController::class, 'update'])
+->name('update-tarefa')->middleware('auth');
+
+
+
 
         
 
