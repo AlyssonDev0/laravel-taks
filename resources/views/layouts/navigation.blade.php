@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('landing-page') }}">
                         <div class="flex flex-row items-center">
                             <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                             <h2 class="font-semibold text-xl text-gray-800 leading-tight ml-2">
@@ -15,12 +15,12 @@
                     </a>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('landing-page')" :active="request()->routeIs('landing-page')">
                         <i class="fa-thin fa-house-blank"></i>    
                         {{ __('INÍCIO') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('cadastrar-tarefa')" :active="request()->routeIs('cadastrar-tarefa')">
-                        {{ __('CADASTRAR TAREFA') }}
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('LISTA DE TAREFAS') }}
                     </x-nav-link>
                 </div>
                

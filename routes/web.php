@@ -15,13 +15,13 @@ use App\Http\Controllers\Auth\TarefasController;
 |
 */
 
-Route::get('/', [TarefasController::class, 'index'])
+Route::get('dashboard', [TarefasController::class, 'index'])
 ->name('dashboard')->middleware('auth');
 
-require __DIR__.'/auth.php';
+Route::get('/', [TarefasController::class, 'home'])
+->name('landing-page')->middleware('auth');
 
-Route::get('cadastrar-tarefa', [TarefasController::class, 'create'])
-->name('cadastrar-tarefa')->middleware('auth');
+require __DIR__.'/auth.php';
 
 Route::post('store-tarefa', [TarefasController::class, 'store'])
 ->name('store-tarefa')->middleware('auth');

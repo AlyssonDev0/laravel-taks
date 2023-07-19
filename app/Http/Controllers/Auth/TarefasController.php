@@ -11,18 +11,17 @@ use Illuminate\Support\Facades\Auth;
 class TarefasController extends Controller
 {
 
+    public function home()
+    { 
+        return view('home');
+    }
     public function index()
     {
-        $listaTarefas = Tarefa::where('user_id', Auth::id())->simplePaginate(3);
+        $listaTarefas = Tarefa::where('user_id', Auth::id())->simplePaginate(5);
         $contadorInicial = ($listaTarefas->currentPage()-1) * $listaTarefas->perPage(); 
         $contadorInicial++;//"Adaptação" para contar itens da paginação kkk
         return view('dashboard', compact('listaTarefas', 'contadorInicial'));
     }
-
-    public function create()
-    {
-        return view('register-tarefa');
-    }   
 
     public function store(TarefaRequest $request){
         
@@ -50,6 +49,6 @@ class TarefasController extends Controller
     public function update(TarefaRequest $request)
     {
         Tarefa::findOrFail($request->id)->update($request->all());
-        return redirect('/')->with('status', "Tarefa Atualizada com Sucesso!");
+        return redirect(route('dashboard'))->with('status', "Tarefa Atualizada com Sucesso!");
     }
 }

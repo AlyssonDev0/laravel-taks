@@ -3,23 +3,37 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="flex justify-between mb-3">
-                        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                            {{ __('Lista de Tarefas') }}
-                        </h2>
 
-                        <x-button>
-                            <a href="{{ route('cadastrar-tarefa')}}">{{ __('Nova Tarefa') }}</a>
-                        </x-button>
+                    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                        {{ __('Lista de Tarefas') }}
+                    </h2>
+
+                    <form method="POST" action="{{ route('store-tarefa') }}">
+                        @csrf
+
+                        <div class="flex mt-2">
+                            <x-input id="tarefa" class="block mt-1 w-full" type="text" name="nome" placeholder="O que precisa ser feito?" :value="old('tarefa')" required autofocus />
+                            <x-button class="mt-1 ml-2">
+                                {{ __('ADICIONAR') }}
+                            </x-button>
+                        </div>
+
+                    </form>
+
+                    <!-- Mensagens Alerts -->
+                    <div class="mt-4">
+                        <x-auth-session-status :status="session('status')" />
+                        <x-auth-validation-errors  :errors="$errors" />
                     </div>
-                    <!-- Session Status -->
-                    <x-auth-session-status class="mb-4" :status="session('status')" />
+
 
                     <div class="flex flex-col mt-2">
                         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                                 <div class="overflow-hidden">
-                                    <table class="border-rounded min-w-full text-left text-sm font-light">
+
+                                @if(count($listaTarefas) > 0)   
+                                <table class="border-rounded min-w-full text-left text-sm font-light">
                                         <thead class="border-b font-medium bg-gray-200 dark:border-neutral-500">
                                             <tr>
                                                 <th scope="col" class="px-6 py-4">Nº</th>
@@ -34,7 +48,11 @@
                                                 <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $contadorInicial++ }}</td>
                                                 <td class="whitespace-nowrap px-6 py-4">{{ $tarefa -> nome }}</td>
                                                 <td class="whitespace-nowrap px-6 py-4 text-center">
-                                                    <input type="checkbox">
+                                                    @if($tarefa->complete == 1 )
+                                                    <button class="btn ">completa</button>
+                                                    @else
+                                                    <button class="btn">incompleta</button>
+                                                    @endif
                                                 </td>
                                                 <td class="flex dap-2 whitespace-nowrap px-6 py-4">
                                                     <x-button-edit>
@@ -60,6 +78,9 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+                                    @else
+                                        <h2 class="text-center mt-6 text-xl">Nenhuma tarefa   registrada.</h2>
+                                    @endif
                                     <div class="mt-4">
                                         {{ $listaTarefas->links() }}
                                     </div>
