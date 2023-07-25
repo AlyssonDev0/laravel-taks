@@ -47,9 +47,9 @@
 
                     <x-slot name="content">
                         <!-- Authentication -->
-                        <x-dropdown-link :href="route('dashboard')"
-                                onclick="event.preventDefault();">
-                                {{ __('Perfil') }}
+                        <x-dropdown-link :href="route('create-update-senha')"
+                                >
+                                {{ __('Alterar Senha') }}
                         </x-dropdown-link>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

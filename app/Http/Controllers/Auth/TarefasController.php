@@ -51,4 +51,5 @@ class TarefasController extends Controller
         Tarefa::findOrFail($request->id)->update($request->all());
         return redirect(route('dashboard'))->with('status', "Tarefa Atualizada com Sucesso!");
     }
+    
 }

@@ -38,7 +38,6 @@
                                             <tr>
                                                 <th scope="col" class="px-6 py-4">Nº</th>
                                                 <th scope="col" class="px-6 py-4">Descrição</th>
-                                                <th scope="col" class="px-6 py-4 text-center">Completa</th>
                                                 <th scope="col" class="px-6 py-4">Ações</th>
                                             </tr>
                                         </thead>
@@ -47,13 +46,6 @@
                                             <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-100">
                                                 <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $contadorInicial++ }}</td>
                                                 <td class="whitespace-nowrap px-6 py-4">{{ $tarefa -> nome }}</td>
-                                                <td class="whitespace-nowrap px-6 py-4 text-center">
-                                                    @if($tarefa->complete == 1 )
-                                                    <button class="btn ">completa</button>
-                                                    @else
-                                                    <button class="btn">incompleta</button>
-                                                    @endif
-                                                </td>
                                                 <td class="flex dap-2 whitespace-nowrap px-6 py-4">
                                                     <x-button-edit>
                                                         <a href="{{ route('create-update-tarefa', ['id' => $tarefa->id]) }}">
