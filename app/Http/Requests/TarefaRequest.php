@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class TarefaRequest extends FormRequest
 {
@@ -23,8 +24,12 @@ class TarefaRequest extends FormRequest
      */
     public function rules()
     {
+        $userId = auth()->user()->id; // Obtém o ID do usuário autenticado  
         return [
-                'nome' => 'required|string|max:100|min:3|unique:tarefas'
+                'nome' => ['required','string','max:100','min:3',
+                Rule::unique('tarefas')->where(function ($query) use ($userId) {
+                    return $query->where('user_id', $userId);
+                })],
             ];
     }
 

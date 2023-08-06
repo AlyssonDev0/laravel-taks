@@ -9,6 +9,7 @@
 
                     <!-- Validation Errors -->
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                    <x-auth-session-status :status="session('status')" />
                     <form method="POST" action="{{ route('update-senha') }}">
                         @csrf
                         <x-label for="tarefa"  :value="__('Senha Atual')" />
@@ -20,7 +21,7 @@
                         </div>
                         <div class="mt-3">
                             <x-label for="tarefa" :value="__('Repetir Nova Senha')" />
-                            <x-input id="tarefa" type="password" class="block mt-1 w-full"  name="rnova_senha" required autofocus />
+                            <x-input id="tarefa" type="password" class="block mt-1 w-full"  name="nova_senha_confirmation" required autofocus />
                         </div>
 
                         <x-button-secondary>
